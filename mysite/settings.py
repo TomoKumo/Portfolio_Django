@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 import django_on_heroku
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,12 +78,33 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+# Database
+# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+
+from socket import gethostname
+hostname = gethostname()
+
+if "TomominoMacBook-Air.local" in hostname:
+    # デバッグ環境
+    # DEBUG = True 
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+    ALLOWED_HOSTS = ['*'] 
+else:
+    # 本番環境
+    # DEBUG = False
+    import dj_database_url
+    db_from_env = dj_database_url.config()
+    DATABASES = {
+        'default': dj_database_url.config()
+    }
+    ALLOWED_HOSTS = ['*']
+
 
 
 # Password validation
