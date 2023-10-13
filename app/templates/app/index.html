@@ -46,10 +46,16 @@
         {% endfor %}
     </div>
     
+    <div class="m-20 p-10 bg-rose-200">
+        <h2 class="text-2xl font-bold p-10">Links</h2>
+        <div class="flex ml-10 mb-10">
+            <a href="{{ profile_data.twitter }}"><img class="w-20 h-20" src="{{ profile_data.twitterimage.url }}" alt=""></a>
+            <a href="{{ profile_data.wantedly }}"><img class="w-20 h-20 ml-10" src="{{ profile_data.wantedlyimage.url }}" alt=""></a>
+            <a href="{{ profile_data.github }}"><img class="w-20 h-20 ml-10" src="{{ profile_data.githubimage.url }}" alt=""></a>
+        </div>
+        <p class="ml-10 mb-10">お問い合わせはX（旧twitter）のDMかwantedlyよりお願いします。</p>
+    </div>
     
-    <li class="nav-item">
-        <a class="nav-link nav-color" href="">CONTACT</a>
-      </li>
 
     <footer class="py-4 text-center bg-gray-700">
         <small class="text-gray-300">&copy; 2023 Tomomi Kumogoshi</small>
