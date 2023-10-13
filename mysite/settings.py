@@ -27,7 +27,6 @@ SECRET_KEY = 'django-insecure-flk@mi$ruzdby^2g&vipu-8yp5tpwbq_7hu+vx@vx=m#wz0)^7
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -87,6 +86,7 @@ from socket import gethostname
 hostname = gethostname()
 
 if "TomominoMacBook-Air.local" in hostname:
+    DEBUG = True
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -95,6 +95,7 @@ if "TomominoMacBook-Air.local" in hostname:
     }
     ALLOWED_HOSTS = ['*'] 
 else:
+    DEBUG = True
     import dj_database_url
     db_from_env = dj_database_url.config()
     DATABASES = {
