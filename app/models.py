@@ -8,8 +8,12 @@ class Profile(models.Model):
     introduction = models.TextField('自己紹介')
     github = models.CharField('github', max_length=100, null=True, blank=True)
     twitter = models.CharField('twitter', max_length=100, null=True, blank=True)
+    wantedly = models.CharField('wantedly', max_length=100, null=True, blank=True)
     topimage = models.ImageField(upload_to='images', verbose_name='トップ画像')
     subimage = models.ImageField(upload_to='images', verbose_name='サブ画像')
+    twitterimage = models.ImageField(upload_to='images', verbose_name='ツイッター画像',default='default_image.jpg')
+    githubimage = models.ImageField(upload_to='images', verbose_name='github画像',default='default_image.jpg')
+    wantedlyimage = models.ImageField(upload_to='images', verbose_name='wantedly画像',default='default_image.jpg')
 
     def __str__(self):
         return self.name
